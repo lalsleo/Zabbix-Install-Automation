@@ -1,0 +1,16 @@
+- name: Configurando o TimeZone
+  shell: timedatectl set-timezone America/Sao_Paulo
+
+- name: Instalando GIT
+  shell: apt install -y git
+
+- name: Instalando Docker
+  shell: curl -fsSL https://get.docker.com | bash -
+
+- name: Iniciando Docker Swarm
+  shell: docker swarm init  
+
+- name: Clonando repositório com docker compose do Zabbix
+  git:
+
+  

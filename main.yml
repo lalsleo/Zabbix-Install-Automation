@@ -1,0 +1,21 @@
+- hosts: todos
+  become: yes
+  user: twbrandsit
+  gather_facts: no
+  pre_tasks:
+  - name: 'atualizando repo'
+    raw: 'apt-get update'
+  - name: 'instalando o python'
+    raw: 'apt-get install python'
+
+- hosts: zabbix
+  become: yes
+  user: twbrandsit
+  roles:
+  - { role: install-zabbix, tags: ["install-zabbix-role"]}
+
+- hosts: db
+  become: yes
+  user: twbrandsit
+  roles:
+  - { role: install-mysql, tags: ["install-mysql-role"]}  
